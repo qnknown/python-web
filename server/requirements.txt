@@ -3,5 +3,5 @@ uvicorn[standard]==0.24.0
 sqlalchemy==2.0.23
 passlib[argon2]==1.7.4
 pyjwt==2.8.0
-pydantic==2.5.0
+pydantic>=2.8.0,<3.0.0
 python-multipart==0.0.6
