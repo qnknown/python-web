@@ -18,7 +18,7 @@ export function UserPage() {
 
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/orders/my', {
+        const response = await fetch('https://python-web-back.onrender.com/orders/my', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -70,7 +70,6 @@ export function UserPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">

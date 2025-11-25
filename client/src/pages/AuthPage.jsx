@@ -12,19 +12,19 @@ export default function AuthPage() {
     setError(null);
 
     const endpoint = isLogin
-      ? "http://127.0.0.1:8000/auth"
-      : "http://127.0.0.1:8000/register";
+      ? "https://python-web-back.onrender.com/auth"
+      : "https://python-web-back.onrender.com/register";
 
     const payload = isLogin
       ? {
-          user_name: form.user_name,
-          password: form.password,
-        }
+        user_name: form.user_name,
+        password: form.password,
+      }
       : {
-          user_name: form.user_name,
-          password: form.password,
-          email: form.email,
-        };
+        user_name: form.user_name,
+        password: form.password,
+        email: form.email,
+      };
 
     try {
       const res = await fetch(endpoint, {
