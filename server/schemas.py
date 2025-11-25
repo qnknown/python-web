@@ -2,6 +2,26 @@ from pydantic import BaseModel
 
 from typing import List, Optional
 
+class ProductResponse(BaseModel):
+    id: int
+    name: str
+    price: float
+    wholesale_price: float
+    wholesale_min_quantity: int
+    category: str
+    image: str
+
+    class Config:
+        orm_mode = True
+
+class ProductCreate(BaseModel):
+    name: str
+    price: float
+    wholesale_price: float
+    wholesale_min_quantity: int
+    category: str
+    image: str
+
 class RegisterRequest(BaseModel):
     user_name: str
     email: str

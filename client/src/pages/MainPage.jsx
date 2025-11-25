@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ShoppingCart, Phone, Mail, MapPin, Menu, X, Package, Store, Truck, User, Trash2, Plus, Minus, CheckCircle } from 'lucide-react';
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,10 @@ export default function MainPage() {
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Всі товари');
 
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [checkoutForm, setCheckoutForm] = useState({
     name: '',
     phone: '',
@@ -19,14 +23,34 @@ export default function MainPage() {
     warehouse: ''
   });
 
-  const products = [
-    { id: 1, name: 'Свіжий хліб житній', price: 35, wholesalePrice: 30, wholesaleMinQuantity: 10, category: 'Хлібобулочні', image: '/img/bread.png' },
-    { id: 2, name: 'Молоко органічне 2.5%', price: 42, wholesalePrice: 38, wholesaleMinQuantity: 12, category: 'Молочні продукти', image: '/img/milk.png' },
-    { id: 3, name: 'Яйця курячі С0', price: 68, wholesalePrice: 60, wholesaleMinQuantity: 10, category: 'Яйця', image: '/img/eggs.png' },
-    { id: 4, name: 'Сир твердий "Гауда"', price: 185, wholesalePrice: 165, wholesaleMinQuantity: 5, category: 'Молочні продукти', image: '/img/cheese.png' },
-    { id: 5, name: 'Ковбаса варена premium', price: 215, wholesalePrice: 195, wholesaleMinQuantity: 5, category: "М'ясні вироби", image: '/img/sausage.png' },
-    { id: 6, name: 'Овочевий салат', price: 95, wholesalePrice: 85, wholesaleMinQuantity: 5, category: 'Салати', image: '/img/salad.png' },
-  ];
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://python-web-back.onrender.com/products');
+        if (!response.ok) throw new Error('Failed to fetch products');
+
+        const data = await response.json();
+        const transformedProducts = data.map(product => ({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          wholesalePrice: product.wholesale_price,
+          wholesaleMinQuantity: product.wholesale_min_quantity,
+          category: product.category,
+          image: product.image
+        }));
+        setProducts(transformedProducts);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError('Не вдалося завантажити товари. Спробуйте пізніше.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const categories = ['Всі товари', 'Хлібобулочні', 'Молочні продукти', 'М\'ясні вироби', 'Овочі та фрукти'];
 
