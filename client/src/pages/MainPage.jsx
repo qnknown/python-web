@@ -20,12 +20,12 @@ export default function MainPage() {
   });
 
   const products = [
-    { id: 1, name: 'Свіжий хліб житній', price: 35, wholesalePrice: 30, wholesaleMinQuantity: 10, category: 'Хлібобулочні', image: '/src/assets/img/bread.png' },
-    { id: 2, name: 'Молоко органічне 2.5%', price: 42, wholesalePrice: 38, wholesaleMinQuantity: 12, category: 'Молочні продукти', image: '/src/assets/img/milk.png' },
-    { id: 3, name: 'Яйця курячі С0', price: 68, wholesalePrice: 60, wholesaleMinQuantity: 10, category: 'Яйця', image: '/src/assets/img/eggs.png' },
-    { id: 4, name: 'Сир твердий "Гауда"', price: 185, wholesalePrice: 165, wholesaleMinQuantity: 5, category: 'Молочні продукти', image: '/src/assets/img/cheese.png' },
-    { id: 5, name: 'Ковбаса варена premium', price: 215, wholesalePrice: 195, wholesaleMinQuantity: 5, category: "М'ясні вироби", image: '/src/assets/img/sausage.png' },
-    { id: 6, name: 'Овочевий салат', price: 95, wholesalePrice: 85, wholesaleMinQuantity: 5, category: 'Салати', image: '/src/assets/img/salad.png' },
+    { id: 1, name: 'Свіжий хліб житній', price: 35, wholesalePrice: 30, wholesaleMinQuantity: 10, category: 'Хлібобулочні', image: '/img/bread.png' },
+    { id: 2, name: 'Молоко органічне 2.5%', price: 42, wholesalePrice: 38, wholesaleMinQuantity: 12, category: 'Молочні продукти', image: '/img/milk.png' },
+    { id: 3, name: 'Яйця курячі С0', price: 68, wholesalePrice: 60, wholesaleMinQuantity: 10, category: 'Яйця', image: '/img/eggs.png' },
+    { id: 4, name: 'Сир твердий "Гауда"', price: 185, wholesalePrice: 165, wholesaleMinQuantity: 5, category: 'Молочні продукти', image: '/img/cheese.png' },
+    { id: 5, name: 'Ковбаса варена premium', price: 215, wholesalePrice: 195, wholesaleMinQuantity: 5, category: "М'ясні вироби", image: '/img/sausage.png' },
+    { id: 6, name: 'Овочевий салат', price: 95, wholesalePrice: 85, wholesaleMinQuantity: 5, category: 'Салати', image: '/img/salad.png' },
   ];
 
   const categories = ['Всі товари', 'Хлібобулочні', 'Молочні продукти', 'М\'ясні вироби', 'Овочі та фрукти'];
